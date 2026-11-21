@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Ifeoluwa ✨</title>
+    <!-- Rose Gold Heart Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23e0566b'><path d='M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z'/></svg>">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="top-pill">
+                <i class="fa-solid fa-sparkles"></i> Specially Made For You
+            </div>
+            <h1 class="hero-title">Ifeoluwa ✨</h1>
+            <p class="hero-alias">Beauty Awelewa</p>
+            <p class="hero-subtitle">I wanted to build something special just to tell you how much I enjoy having you in my corner.</p>
+        </header>
+
+        <!-- Interactive Cards: Why You -->
+        <section class="section">
+            <span class="section-label">A Few Things About You</span>
+            <div class="cards-grid">
+                <div class="info-card">
+                    <i class="fa-solid fa-wand-magic-sparkles card-icon"></i>
+                    <h3>Effortless Vibe</h3>
+                    <p>Every conversation with you feels natural, easy, and genuinely makes my day better.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fa-solid fa-crown card-icon"></i>
+                    <h3>True to Your Name</h3>
+                    <p>Beauty Awelewa isn't just a name—your energy and presence really stand out.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fa-solid fa-heart card-icon"></i>
+                    <h3>My Favorite Person</h3>
+                    <p>Out of everyone, you're the person I always look forward to talking to most.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Big Question Card -->
+        <section class="section question-section" id="questionBox">
+            <div class="question-card">
+                <span class="q-badge">One Question</span>
+                <h2>Will you be my girlfriend? ❤️</h2>
+                <p class="q-subtext">Let's make this official and start something amazing together.</p>
+
+                <div class="btn-group" id="btnGroup">
+                    <button class="btn-yes" id="yesBtn" onclick="sayYes()">
+                        <i class="fa-solid fa-heart"></i> Yes, I will!
+                    </button>
+                    <button class="btn-no" id="noBtn" onmouseover="dodgeButton()" ontouchstart="dodgeButton()" onclick="dodgeButton()">
+                        No
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hidden Celebration Screen (Revealed on Yes) -->
+        <section class="section celebration-section hidden" id="celebrationBox">
+            <div class="celebration-card">
+                <div class="pulse-heart">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <h2>Best Decision Ever! 🎉❤️</h2>
+                <p>You just made my whole week, Awelewa. Redirecting you to my WhatsApp now...</p>
+                <a href="https://wa.me/2349077791032?text=Yes%2C%20I'd%20love%20to%20be%20your%20girlfriend%20%E2%9D%A4%EF%B8%8F%E2%9C%A8" class="btn-whatsapp" id="waFallbackBtn">
+                    <i class="fa-brands fa-whatsapp"></i> Open WhatsApp Chat
+                </a>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Crafted exclusively for Ifeoluwa ✨</p>
+        </footer>
+    </main>
+
+    <canvas id="confettiCanvas"></canvas>
+
+    <script>
+        const noTexts = [
+            "Are you sure?",
+            "Think again 👀",
+            "Wrong button!",
+            "Nice try 😂",
+            "Tap the pink one!",
+            "Nope, try again ❤️"
+        ];
+        let dodgeCount = 0;
+
+        function dodgeButton() {
+            const noBtn = document.getElementById('noBtn');
+            const maxX = 140;
+            const maxY = 90;
+
+            const randomX = Math.floor(Math.random() * (maxX * 2)) - maxX;
+            const randomY = Math.floor(Math.random() * (maxY * 2)) - maxY;
+
+            noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            noBtn.innerText = noTexts[dodgeCount % noTexts.length];
+            dodgeCount++;
+        }
+
+        function sayYes() {
+            // Hide question box and show celebration box
+            document.getElementById('questionBox').classList.add('hidden');
+            document.getElementById('celebrationBox').classList.remove('hidden');
+
+            // Trigger confetti & vibration
+            triggerConfetti();
+            if (navigator.vibrate) {
+                navigator.vibrate([60, 40, 80]);
+            }
+
+            // Automatically redirect to WhatsApp after 1.8 seconds
+            const waUrl = "https://wa.me/2349077791032?text=Yes%2C%20I'd%20love%20to%20be%20your%20girlfriend%20%E2%9D%A4%EF%B8%8F%E2%9C%A8";
+            setTimeout(() => {
+                window.location.href = waUrl;
+            }, 1800);
+        }
+
+        function triggerConfetti() {
+            const canvas = document.getElementById('confettiCanvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            let particles = [];
+            const colors = ['#e0566b', '#f4a261', '#ff2a55', '#ffd1dc', '#ffffff'];
+
+            for (let i = 0; i < 80; i++) {
+                particles.push({
+                    x: canvas.width / 2,
+                    y: canvas.height / 2,
+                    size: Math.random() * 8 + 4,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    speedY: Math.random() * -12 - 3,
+                    speedX: Math.random() * 12 - 6,
+                    gravity: 0.25,
+                    opacity: 1
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach((p, i) => {
+                    p.speedY += p.gravity;
+                    p.x += p.speedX;
+                    p.y += p.speedY;
+                    p.opacity -= 0.012;
+
+                    ctx.fillStyle = p.color;
+                    ctx.globalAlpha = Math.max(0, p.opacity);
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    if (p.opacity <= 0 || p.y > canvas.height) {
+                        particles.splice(i, 1);
+                    }
+                });
+
+                if (particles.length > 0) {
+                    requestAnimationFrame(animate);
+                } else {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                }
+            }
+            animate();
+        }
+    </script>
+</body>
+</html>
