@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For Ifeoluwa ✨</title>
     <!-- Rose Gold Heart Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23e0566b'><path d='M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z'/></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23e03150'><path d='M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z'/></svg>">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,32 +15,42 @@
 </head>
 <body>
 
+    <!-- Dynamic Ambient Background Orbs & Floating Particles -->
+    <div class="ambient-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div id="floatingParticles"></div>
+    </div>
+
     <main class="container">
         <!-- Hero Section -->
-        <header class="hero">
+        <header class="hero reveal">
             <div class="top-pill">
-                <i class="fa-solid fa-sparkles"></i> Specially Made For You
+                <i class="fa-solid fa-sparkles"></i> Exclusively For You
             </div>
             <h1 class="hero-title">Ifeoluwa ✨</h1>
             <p class="hero-alias">Beauty Awelewa</p>
-            <p class="hero-subtitle">I wanted to build something special just to tell you how much I enjoy having you in my corner.</p>
+            <p class="hero-subtitle">I wanted to build something sleek and unforgettable just to show you how much I enjoy having you in my corner.</p>
         </header>
 
         <!-- Interactive Cards: Why You -->
-        <section class="section">
-            <span class="section-label">A Few Things About You</span>
+        <section class="section reveal delay-1">
+            <span class="section-label">Why You Stand Out</span>
             <div class="cards-grid">
                 <div class="info-card">
+                    <div class="card-glow"></div>
                     <i class="fa-solid fa-wand-magic-sparkles card-icon"></i>
                     <h3>Effortless Vibe</h3>
                     <p>Every conversation with you feels natural, easy, and genuinely makes my day better.</p>
                 </div>
                 <div class="info-card">
+                    <div class="card-glow"></div>
                     <i class="fa-solid fa-crown card-icon"></i>
                     <h3>True to Your Name</h3>
                     <p>Beauty Awelewa isn't just a name—your energy and presence really stand out.</p>
                 </div>
                 <div class="info-card">
+                    <div class="card-glow"></div>
                     <i class="fa-solid fa-heart card-icon"></i>
                     <h3>My Favorite Person</h3>
                     <p>Out of everyone, you're the person I always look forward to talking to most.</p>
@@ -49,8 +59,9 @@
         </section>
 
         <!-- The Big Question Card -->
-        <section class="section question-section" id="questionBox">
+        <section class="section question-section reveal delay-2" id="questionBox">
             <div class="question-card">
+                <div class="border-beam"></div>
                 <span class="q-badge">One Question</span>
                 <h2>Will you be my girlfriend? ❤️</h2>
                 <p class="q-subtext">Let's make this official and start something amazing together.</p>
@@ -73,14 +84,14 @@
                     <i class="fa-solid fa-heart"></i>
                 </div>
                 <h2>Best Decision Ever! 🎉❤️</h2>
-                <p>You just made my whole week, Awelewa. Redirecting you to my WhatsApp now...</p>
+                <p>You just made my whole week, Awelewa. Taking you straight to my WhatsApp now...</p>
                 <a href="https://wa.me/2349077791032?text=Yes%2C%20I'd%20love%20to%20be%20your%20girlfriend%20%E2%9D%A4%EF%B8%8F%E2%9C%A8" class="btn-whatsapp" id="waFallbackBtn">
                     <i class="fa-brands fa-whatsapp"></i> Open WhatsApp Chat
                 </a>
             </div>
         </section>
 
-        <footer class="footer">
+        <footer class="footer reveal delay-3">
             <p>Crafted exclusively for Ifeoluwa ✨</p>
         </footer>
     </main>
@@ -88,20 +99,33 @@
     <canvas id="confettiCanvas"></canvas>
 
     <script>
+        // Create subtle floating rose-gold sparkles in background
+        const particleContainer = document.getElementById('floatingParticles');
+        for (let i = 0; i < 18; i++) {
+            const spark = document.createElement('span');
+            spark.classList.add('spark');
+            spark.style.left = Math.random() * 100 + 'vw';
+            spark.style.animationDuration = (Math.random() * 6 + 6) + 's';
+            spark.style.animationDelay = (Math.random() * 5) + 's';
+            spark.style.width = spark.style.height = (Math.random() * 4 + 2) + 'px';
+            particleContainer.appendChild(spark);
+        }
+
+        // Dodging No Button Logic
         const noTexts = [
             "Are you sure?",
             "Think again 👀",
             "Wrong button!",
             "Nice try 😂",
-            "Tap the pink one!",
+            "Tap the crimson one!",
             "Nope, try again ❤️"
         ];
         let dodgeCount = 0;
 
         function dodgeButton() {
             const noBtn = document.getElementById('noBtn');
-            const maxX = 140;
-            const maxY = 90;
+            const maxX = 135;
+            const maxY = 85;
 
             const randomX = Math.floor(Math.random() * (maxX * 2)) - maxX;
             const randomY = Math.floor(Math.random() * (maxY * 2)) - maxY;
@@ -111,24 +135,23 @@
             dodgeCount++;
         }
 
+        // Yes Celebration & WhatsApp Redirect
         function sayYes() {
-            // Hide question box and show celebration box
             document.getElementById('questionBox').classList.add('hidden');
             document.getElementById('celebrationBox').classList.remove('hidden');
 
-            // Trigger confetti & vibration
             triggerConfetti();
             if (navigator.vibrate) {
                 navigator.vibrate([60, 40, 80]);
             }
 
-            // Automatically redirect to WhatsApp after 1.8 seconds
             const waUrl = "https://wa.me/2349077791032?text=Yes%2C%20I'd%20love%20to%20be%20your%20girlfriend%20%E2%9D%A4%EF%B8%8F%E2%9C%A8";
             setTimeout(() => {
                 window.location.href = waUrl;
             }, 1800);
         }
 
+        // Confetti Engine
         function triggerConfetti() {
             const canvas = document.getElementById('confettiCanvas');
             const ctx = canvas.getContext('2d');
@@ -136,16 +159,16 @@
             canvas.height = window.innerHeight;
 
             let particles = [];
-            const colors = ['#e0566b', '#f4a261', '#ff2a55', '#ffd1dc', '#ffffff'];
+            const colors = ['#e03150', '#e5989b', '#ff2a55', '#ffd1dc', '#ffffff'];
 
-            for (let i = 0; i < 80; i++) {
+            for (let i = 0; i < 90; i++) {
                 particles.push({
                     x: canvas.width / 2,
                     y: canvas.height / 2,
                     size: Math.random() * 8 + 4,
                     color: colors[Math.floor(Math.random() * colors.length)],
-                    speedY: Math.random() * -12 - 3,
-                    speedX: Math.random() * 12 - 6,
+                    speedY: Math.random() * -13 - 3,
+                    speedX: Math.random() * 14 - 7,
                     gravity: 0.25,
                     opacity: 1
                 });
