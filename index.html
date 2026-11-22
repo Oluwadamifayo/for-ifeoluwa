@@ -33,28 +33,43 @@
             <p class="hero-subtitle">Since I cannot ask U out in real life, I decided to ask you out in a special way and I really hope dis is special enough to have me a yes.</p>
         </header>
 
-        <!-- Interactive Cards: Why You -->
+        <!-- Interactive Envelope Cards -->
         <section class="section reveal delay-1">
-            <span class="section-label">Why You Stand Out</span>
+            <span class="section-label">Tap to Open Your Letters 💌</span>
             <div class="cards-grid">
-                <div class="info-card">
+                
+                <!-- Envelope 1 -->
+                <div class="envelope-card" onclick="openLetter('modal1')">
                     <div class="card-glow"></div>
-                    <i class="fa-solid fa-wand-magic-sparkles card-icon"></i>
+                    <div class="envelope-icon-wrap">
+                        <i class="fa-solid fa-envelope-open-text card-icon"></i>
+                        <span class="tap-badge"><i class="fa-solid fa-hand-pointer"></i> Tap to Open</span>
+                    </div>
                     <h3>Effortless Vibe</h3>
-                    <p>Every conversation with U feels soo natural, beautiful, comfortable, natural and also make my day completely beautiful. lyk I most times say, Ur voice is lyk therapy, U make my wounds heal, U make me smile seemlesly without even trying, U gimme advice dat makes me know I can become better, I actually really really love you Ifeoluwa, I know U know dat but dis is my small way of showing it to U</p>
+                    <p class="preview-text">Every conversation with U feels soo natural, beautiful, comfortable...</p>
                 </div>
-                <div class="info-card">
+
+                <!-- Envelope 2 -->
+                <div class="envelope-card" onclick="openLetter('modal2')">
                     <div class="card-glow"></div>
-                    <i class="fa-solid fa-crown card-icon"></i>
+                    <div class="envelope-icon-wrap">
+                        <i class="fa-solid fa-envelope-open-text card-icon"></i>
+                        <span class="tap-badge"><i class="fa-solid fa-hand-pointer"></i> Tap to Open</span>
+                    </div>
                     <h3>True to Your Names</h3>
-                    <p>Awelewa isn't just a name it means a person with beauty, and indeed U don't just bear d name, U r evidence of Ur name, U r a very beautiful and special girl, who I admire allot, Temitayo, I take this name as my own is enough to make me happy and by this I hope U would be mine, U aren't yet mine and U already are my Joy hw much more when you are mine. Moyosore, I would rejoice every day as long as U r mine, I would rejoice to the gift I have which is you it's soo amazing to be loved by someone lyk you. Omowunmi, I desire a child and that child is you although U aren't a child but U represent d child Ur name says, I desire to have you as mine, and I really hope U would be mine.</p>
+                    <p class="preview-text">Awelewa isn't just a name it means a person with beauty, and indeed U don't...</p>
                 </div>
-                <div class="info-card">
+
+                <!-- Envelope 3 -->
+                <div class="envelope-card" onclick="openLetter('modal3')">
                     <div class="card-glow"></div>
-                    <i class="fa-solid fa-heart card-icon"></i>
-                    <h3>My Favorite Person</h3>
-                    <p>The little times we chat was bringing up a better loving version of me, then we started calls, mehn calling U is sooo goooooodd lyk U r very fun to talk with, call, gist with and confide in. Recently, out of everyone U r the person I always look forward to talking to the most, and dis is bcs U mean allot to me, U make me smile and U r very special in Ur own way And I really really appreciate that U took out time to talk with me and keep me company, it's soo nice knowing U have someone dat really loves you and wants U. Ifeoluwa, I really really love you and everything you do for and to me. You are the best.</p>
+                    <i class="fa-solid fa-envelope-open-text card-icon"></i>
+                    <span class="tap-badge"><i class="fa-solid fa-hand-pointer"></i> Tap to Open</span>
                 </div>
+                <h3>My Favorite Person</h3>
+                    <p class="preview-text">The little times we chat was bringing up a better loving version of me...</p>
+                </div>
+
             </div>
         </section>
 
@@ -96,10 +111,52 @@
         </footer>
     </main>
 
+    <!-- Modal Popup for Letter 1 -->
+    <div class="modal-overlay" id="modal1">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <h3>Effortless Vibe</h3>
+                <button class="close-btn" onclick="closeLetter('modal1')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>Every conversation with U feels soo natural, beautiful, comfortable, natural and also make my day completely beautiful. lyk I most times say, Ur voice is lyk therapy, U make my wounds heal, U make me smile seemlesly without even trying, U gimme advice dat makes me know I can become better, I actually really really love you Ifeoluwa, I know U know dat but dis is my small way of showing it to U</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Popup for Letter 2 -->
+    <div class="modal-overlay" id="modal2">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa-solid fa-crown"></i>
+                <h3>True to Your Names</h3>
+                <button class="close-btn" onclick="closeLetter('modal2')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>Awelewa isn't just a name it means a person with beauty, and indeed U don't just bear d name, U r evidence of Ur name, U r a very beautiful and special girl, who I admire allot, Temitayo, I take this name as my own is enough to make me happy and by this I hope U would be mine, U aren't yet mine and U already are my Joy hw much more when you are mine. Moyosore, I would rejoice every day as long as U r mine, I would rejoice to the gift I have which is you it's soo amazing to be loved by someone lyk you. Omowunmi, I desire a child and that child is you although U aren't a child but U represent d child Ur name says, I desire to have you as mine, and I really hope U would be mine.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Popup for Letter 3 -->
+    <div class="modal-overlay" id="modal3">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa-solid fa-heart"></i>
+                <h3>My Favorite Person</h3>
+                <button class="close-btn" onclick="closeLetter('modal3')"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>The little times we chat was bringing up a better loving version of me, then we started calls, mehn calling U is sooo goooooodd lyk U r very fun to talk with, call, gist with and confide in. Recently, out of everyone U r the person I always look forward to talking to the most, and dis is bcs U mean allot to me, U make me smile and U r very special in Ur own way And I really really appreciate that U took out time to talk with me and keep me company, it's soo nice knowing U have someone dat really loves you and wants U. Ifeoluwa, I really really love you and everything you do for and to me. You are the best.</p>
+            </div>
+        </div>
+    </div>
+
     <canvas id="confettiCanvas"></canvas>
 
     <script>
-        // Create subtle floating rose-gold sparkles in background
+        // Background floating sparkles
         const particleContainer = document.getElementById('floatingParticles');
         for (let i = 0; i < 18; i++) {
             const spark = document.createElement('span');
@@ -109,6 +166,23 @@
             spark.style.animationDelay = (Math.random() * 5) + 's';
             spark.style.width = spark.style.height = (Math.random() * 4 + 2) + 'px';
             particleContainer.appendChild(spark);
+        }
+
+        // Modal Open / Close Functions
+        function openLetter(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            if (navigator.vibrate) navigator.vibrate(40);
+        }
+
+        function closeLetter(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // Close modal if clicking outside content
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
+            }
         }
 
         // Dodging No Button Logic

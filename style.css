@@ -1,7 +1,7 @@
 :root {
     --bg-dark: #0a0608;
-    --card-bg: rgba(24, 14, 19, 0.72);
-    --card-border: rgba(229, 152, 155, 0.2);
+    --card-bg: rgba(24, 14, 19, 0.75);
+    --card-border: rgba(229, 152, 155, 0.25);
     --text-primary: #fdf6f7;
     --text-secondary: #bda1a8;
     --rose-gold: #e5989b;
@@ -169,7 +169,7 @@ body {
 
 .section-label {
     display: block;
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--rose-gold);
@@ -178,14 +178,14 @@ body {
     text-align: center;
 }
 
-/* Glassmorphism Cards Grid */
+/* Envelope Clickable Cards */
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
     gap: 16px;
 }
 
-.info-card {
+.envelope-card {
     background: var(--card-bg);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -194,38 +194,151 @@ body {
     padding: 24px 18px;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
     transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.info-card:hover {
+.envelope-card:hover {
     transform: translateY(-6px);
     border-color: var(--rose-gold);
-    box-shadow: 0 12px 30px rgba(224, 49, 80, 0.18);
+    box-shadow: 0 12px 30px rgba(224, 49, 80, 0.22);
+}
+
+.envelope-icon-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
 }
 
 .card-icon {
     font-size: 1.4rem;
     color: var(--crimson-accent);
-    margin-bottom: 12px;
-    display: inline-block;
     transition: transform 0.3s ease;
 }
 
-.info-card:hover .card-icon {
+.envelope-card:hover .card-icon {
     transform: scale(1.15);
 }
 
-.info-card h3 {
+.tap-badge {
+    font-size: 0.68rem;
+    background: rgba(229, 152, 155, 0.12);
+    color: var(--rose-gold);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.envelope-card h3 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.38rem;
     color: var(--text-primary);
     margin-bottom: 6px;
 }
 
-.info-card p {
-    font-size: 0.85rem;
+.preview-text {
+    font-size: 0.82rem;
     color: var(--text-secondary);
-    line-height: 1.55;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Modal Popup Letter Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 6, 8, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: linear-gradient(155deg, #24141c, #130a0e);
+    border: 1px solid var(--rose-gold);
+    border-radius: 26px;
+    width: 100%;
+    max-width: 520px;
+    padding: 30px;
+    box-shadow: 0 25px 60px rgba(224, 49, 80, 0.35);
+    transform: translateY(30px) scale(0.95);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0) scale(1);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid rgba(229, 152, 155, 0.15);
+    padding-bottom: 14px;
+}
+
+.modal-header i {
+    font-size: 1.4rem;
+    color: var(--crimson-accent);
+}
+
+.modal-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    color: #ffffff;
+    flex-grow: 1;
+}
+
+.close-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: var(--text-primary);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: background 0.2s;
+}
+
+.close-btn:hover {
+    background: var(--crimson-accent);
+}
+
+.modal-body p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
 }
 
 /* Question Card */
@@ -253,7 +366,7 @@ body {
 
 .question-card h2, .celebration-card h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.4rem;
+    font-size: 2.2rem;
     color: #ffffff;
     margin-bottom: 10px;
 }
